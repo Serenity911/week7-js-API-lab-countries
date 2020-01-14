@@ -9,11 +9,17 @@
   <body>
     <div id="app">
       <h1>Test</h1>
-
+      <div >
+        <h2>Favorite Countries:</h2>
+        <ul>
+          <li v-if="favourites" v-for="item in favourites">{{item}}</li>
+        </ul>
+      </div>
       <div>
         <ul>
           <li v-for="(item, index) in allCountriesPopulation">
-            <button type="button" @click="fetchCountryDetails(index)">Details</button>
+            <button @click="fetchCountryDetails(index)">Details</button>
+            <button @click="addToFavourite(index)">Save</button>
             <span>Country Name: {{ item.name }};</span>
             <span>Population: {{ item.population }} </span>
           </li>
@@ -24,7 +30,7 @@
         <h3 v-if="selectedCountry">{{ selectedCountry.name }}</h3>
         <img v-if="selectedCountry" :src="selectedCountry.flag">
         <ul>
-          
+
         </ul>
       </div>
     </div>

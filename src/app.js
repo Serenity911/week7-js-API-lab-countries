@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     el: "#app",
     data: {
       allCountriesPopulation: null,
-      selectedCountry: null
+      selectedCountry: null,
+      favourites: []
     },
     // computed: {
     //
@@ -21,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       fetchCountryDetails: function (index) {
         return this.selectedCountry = this.allCountriesPopulation[index]
+      },
+      addToFavourite: function(index) {
+        this.favourites.unshift(this.allCountriesPopulation[index].name)
       }
     },
   })
