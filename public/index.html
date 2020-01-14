@@ -8,7 +8,8 @@
 </head>
 <body>
   <div id="app">
-    <h1>Test</h1>
+    <h1>Countries</h1>
+    <!-- <h2>Total population: {{ totalPop }}</h2> -->
     <div v-if="favourites.length">
       <h2>Favorite Countries:</h2>
       <ul class="list">
@@ -23,8 +24,8 @@
           <th>Name</th>
           <th>Population</th>
         </tr>
-        <tr v-for="(item, index) in allCountriesPopulation">
-          <!-- <li v-for="(item, index) in allCountriesPopulation"> -->
+        <tr v-for="(item, index) in allCountries">
+          <!-- <li v-for="(item, index) in allCountries"> -->
           <td><button @click="fetchCountryDetails(index)">Details</button></td>
           <td><button @click="fetchBorders(index)">Neighbours</button></td>
           <td><button @click="addToFavourite(index)">Save</button></td>
@@ -37,13 +38,13 @@
                   <li>Capital: {{ selectedCountry.capital }}</li>
                   <li>Region: {{ selectedCountry.region }}</li>
                 </ul>
-              </td>
+              <!-- </td>
               <td id="neighbours">
                 <p>{{selectedCountryNeighbours}}</p>
                 <!-- <ul>
                   <li v:for="neighbour in selectedCountryNeighbours"> {{ neighbour }}</li>
                 </ul> -->
-              </td>
+              <!-- </td> -->
           </tr>
 
         </div>

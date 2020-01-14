@@ -4,13 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   new Vue ({
     el: "#app",
     data: {
-      allCountriesPopulation: null,
+      allCountries: null,
       selectedCountry: null,
-      selectedCountryNeighbours: [],
+      totalPop: null,
+      // selectedCountryNeighbours: [],
       favourites: []
     },
     // computed: {
-    //
+    //   getTotalPop: function () {
+    //     this.allCountries = this.fetchAllCountriesPopulation()
+    //     for (const i of this.allCountries ) {
+    //       console.log(i);
+    //       this.totalPop += i.population
+    //     }
+    //     return getTotalPop;
+    //   }
     // },
     mounted: function () {
       this.fetchAllCountriesPopulation()
@@ -19,24 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
       fetchAllCountriesPopulation: function () {
         fetch('https://restcountries.eu/rest/v2/all')
         .then(response => response.json())
-        .then(result => this.allCountriesPopulation = result)
+        .then(result => this.allCountries = result)
       },
       fetchCountryDetails: function (index) {
-        return this.selectedCountry = this.allCountriesPopulation[index]
+        return this.selectedCountry = this.allCountries[index]
       },
       addToFavourite: function(index) {
-        this.favourites.unshift(this.allCountriesPopulation[index].name)
+        this.favourites.unshift(this.allCountries[index].name)
       },
-      fetchBorders: function (index) {
-        const bordersArray = this.allCountriesPopulation[index].borders
-        // console.log(bordersArray);
-        for (let country of bordersArray) {
-          const neighbour = this.allCountriesPopulation.find(country)
-          console.log(neighbour);
+      // fetchBorders: function (index) {
+      //   const bordersArray = this.allCountries[index].borders
+      //   // console.log(bordersArray);
+      //   for (let country of bordersArray) {
+      //     const neighbour = this.allCountries.find(country)
+      //     console.log(neighbour);
           // this.selectedCountryNeighbours.push(neighbour.name)
-        }
-      },
-      findCountryByCode: function (code)
+        // }
+      // }
+      // findCountryByCode: function (code)
     },
   })
 })
