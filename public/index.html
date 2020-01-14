@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Countries Lab</title>
-    <script src="./js/bundle.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
-    <div id="app">
-      <h1>Test</h1>
-      <div >
-        <h2>Favorite Countries:</h2>
-        <ul>
-          <li v-if="favourites" v-for="item in favourites">{{item}}</li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li v-for="(item, index) in allCountriesPopulation">
-            <button @click="fetchCountryDetails(index)">Details</button>
-            <button @click="addToFavourite(index)">Save</button>
-            <span>Country Name: {{ item.name }};</span>
-            <span>Population: {{ item.population }} </span>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2>Country Details:</h2>
-        <h3 v-if="selectedCountry">{{ selectedCountry.name }}</h3>
-        <img v-if="selectedCountry" :src="selectedCountry.flag">
-        <ul>
-
-        </ul>
-      </div>
+<head>
+  <meta charset="utf-8">
+  <title>Countries Lab</title>
+  <script src="./js/bundle.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Test</h1>
+    <div v-if="favourites.length">
+      <h2>Favorite Countries:</h2>
+      <ul class="list">
+        <li v-for="item in favourites">{{item}}</li>
+      </ul>
     </div>
-  </body>
-</html>
+    <div>
+      <table class = "table">
+        <tr>
+          <th>Details</th>
+          <th>Save</th>
+          <th>Name</th>
+          <th>Population</th>
+        </tr>
+        <tr v-for="(item, index) in allCountriesPopulation">
+          <!-- <li v-for="(item, index) in allCountriesPopulation"> -->
+          <td><button @click="fetchCountryDetails(index)">Details</button></td>
+          <td><button @click="addToFavourite(index)">Save</button></td>
+          <td>{{ item.name }}</td>
+          <td id="population">{{ item.population }}</td>
+              <td id="details" v-if="selectedCountry === item">
+                <h3>{{ selectedCountry.name }}</h3>
+                <img :src="selectedCountry.flag">
+                <ul>
+                  <li>Capital: {{ selectedCountry.capital }}</li>
+                  <li>Region: {{ selectedCountry.region }}</li>
+                </ul>
+              </td>
+          </tr>
+
+        </div>
+
+      </div>
+    </body>
+    </html>

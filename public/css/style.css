@@ -1,0 +1,27 @@
+img {
+  width: 2rem;
+  margin-left: 1rem;
+}
+
+#details {
+  display: flex;
+  align-items: center;
+  border: thin black solid;
+  padding: 0.5rem;
+  background-color: rgb(200, 229, 255);
+}
+
+.list {
+  background-color: rgb(242, 214, 214);
+  width: 35rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.list > li {
+  padding-bottom: 0.5rem;
+}
+
+#population {
+  text-align: right;
+}
