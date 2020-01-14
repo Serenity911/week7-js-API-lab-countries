@@ -26,6 +26,7 @@
         <tr v-for="(item, index) in allCountriesPopulation">
           <!-- <li v-for="(item, index) in allCountriesPopulation"> -->
           <td><button @click="fetchCountryDetails(index)">Details</button></td>
+          <td><button @click="fetchBorders(index)">Neighbours</button></td>
           <td><button @click="addToFavourite(index)">Save</button></td>
           <td>{{ item.name }}</td>
           <td id="population">{{ item.population }}</td>
@@ -36,6 +37,12 @@
                   <li>Capital: {{ selectedCountry.capital }}</li>
                   <li>Region: {{ selectedCountry.region }}</li>
                 </ul>
+              </td>
+              <td id="neighbours">
+                <p>{{selectedCountryNeighbours}}</p>
+                <!-- <ul>
+                  <li v:for="neighbour in selectedCountryNeighbours"> {{ neighbour }}</li>
+                </ul> -->
               </td>
           </tr>
 

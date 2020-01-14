@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       allCountriesPopulation: null,
       selectedCountry: null,
+      selectedCountryNeighbours: [],
       favourites: []
     },
     // computed: {
@@ -25,7 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       addToFavourite: function(index) {
         this.favourites.unshift(this.allCountriesPopulation[index].name)
-      }
+      },
+      fetchBorders: function (index) {
+        const bordersArray = this.allCountriesPopulation[index].borders
+        // console.log(bordersArray);
+        for (let country of bordersArray) {
+          const neighbour = this.allCountriesPopulation.find(country)
+          console.log(neighbour);
+          // this.selectedCountryNeighbours.push(neighbour.name)
+        }
+      },
+      findCountryByCode: function (code)
     },
   })
 })
